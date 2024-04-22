@@ -147,11 +147,12 @@ class GPTSeleniumAgent:
     """Helper functions"""
 
     def _check_danger(self, action_str):
-        """Check that the action is not dangerous. If so, just quit."""
+        """Check that the action is not dangerous. If so, raise an exception."""
         if self._is_potentially_dangerous(action_str):
-            logger.warning("Action is potentially dangerous. Exiting.")
+            logger.warning("Action is potentially dangerous. Raising an exception.")
             logger.warning(f"Action: {action_str}")
-            sys.exit(1)
+            raise Exception("Dangerous action detected. Agent ")
+            
 
     def _is_potentially_dangerous(self, code_str):
         """Isaac Asimov is rolling over in his grave."""
